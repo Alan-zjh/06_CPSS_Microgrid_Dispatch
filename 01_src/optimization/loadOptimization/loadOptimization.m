@@ -1,0 +1,47 @@
+classdef loadOptimization
+    
+    properties
+        loadScheduleList
+        
+    end
+    
+    methods
+        function obj = loadOptimization(params)
+
+            obj.loadScheduleList = repmat(struct(), params.numLoad, 144);
+            
+        end
+        
+        function loadOperationData = scheduleLoad(obj, loadDemand)
+            
+            for iLoad = 1:length(loadDemand) - 1
+                if loadDemand(iLoad).isNeed
+                    currentPCurve = loadDemand(iLoad).pCurve;
+                    for iTimeSlot = 1:144
+                        if fieldnames(obj.loadScheduleList(iLoad, iTimeSlot))
+                            
+                        end
+                    end
+                    % 遍历未来144个时隙，找到最优启用时隙
+                    for time = currentTimeslot:(currentTimeslot + 144 - 1)
+                        % 检查该时隙是否已启用
+                        if isEnabled(mod(time - 1, 144) + 1) == 0 
+
+                            loss = abs(time - currentTimeslot) / 144 + sum((currentPCurve / 6000 / 9) .* ...
+                                    elecPrice(mod(time-1, 144) + 1: ...
+                                    mod(time-1, 144) + length(currentPCurve)));
+
+                            if loss < minLoss
+                                minEnableIndex = time;
+                                minLoss = loss;
+                            end
+                        end
+                    end
+                end
+                activationList(idx, ) = circshift(activationList, -1);
+            end
+        end
+    end
+end
+
+帮我完善负载优化这个类
