@@ -24,7 +24,7 @@ function testHvac()
         'homeParams', struct('homeTd3Params', td3Params)...
         );
     controller = MicroGridController(controlParams);
-    output = controller.trainHvac(1000,1);
+    output = controller.trainHvac(600,1:8);
     save(".\02_data\02_output\hvac\output.mat", output);
 end
 

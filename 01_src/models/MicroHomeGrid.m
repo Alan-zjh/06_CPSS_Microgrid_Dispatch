@@ -13,6 +13,7 @@ classdef MicroHomeGrid < handle & matlab.mixin.Copyable
 
         % 参数
         pTotalDemand  % 总负载需求
+        comfortWeight % 舒适度
     end
 
     methods
@@ -26,6 +27,7 @@ classdef MicroHomeGrid < handle & matlab.mixin.Copyable
             obj.hvac = HvacSystem(HomeParams.hvacParams);
             % obj.ev = EV(HomeParams.evParams);
             obj.loadArray = arrayfun(@(x) Load(x), HomeParams.loadsParams);
+            obj.comfortWeight = HomeParams.comfortWeight;
             obj.pTotalDemand = 0; % 初始总负载
         end
 

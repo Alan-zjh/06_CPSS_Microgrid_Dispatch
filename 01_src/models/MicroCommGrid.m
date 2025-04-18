@@ -1,4 +1,3 @@
-
 %================================================================
 % 功能： MicroCommGrid 类用于存放微电网实时参数
 % 参数： microHomeGrid 、 bess 、 pvSystem 、 params

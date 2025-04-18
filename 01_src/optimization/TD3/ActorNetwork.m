@@ -13,7 +13,7 @@ classdef ActorNetwork < handle
         averageGrad
         averageSqGrad
     end
-    
+
     methods
         function obj = ActorNetwork(actorParams)
             %{
@@ -46,7 +46,7 @@ classdef ActorNetwork < handle
             obj.averageSqGrad = [];
 
         end
-        
+
         function action = forward(obj, state)
             action = forward(obj.network, state);
         end

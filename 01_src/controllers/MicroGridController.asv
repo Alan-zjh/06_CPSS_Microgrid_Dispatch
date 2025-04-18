@@ -347,11 +347,6 @@ classdef MicroGridController < handle
                             state{idx}, action{idx}, reward(idx), nextState{idx}, done);
 
                         agent.learn();
-                        if mod(episode, 200) == 0
-                            if currentTimeslot == obj.simulation.timeLine.totalTimeslot - 1
-                                agent.saveModels(episode);
-                            end
-                        end
                     end
                 
                     obj.simulation.timeLine.currentTimeslot = obj.simulation.timeLine.currentTimeslot + 1;
@@ -359,6 +354,12 @@ classdef MicroGridController < handle
                     isTimeOut = obj.simulation.timeLine.currentTimeslot >= obj.simulation.timeLine.totalTimeslot;
                     if isTimeOut
                         done = 1;
+                    end
+                    
+                    if mod(episode, 200) == 0
+                        if currentTimeslot == obj.simulation.timeLine.totalTimeslot - 1
+                            agent.saveModels(episode);
+                        end
                     end
                 end
                 

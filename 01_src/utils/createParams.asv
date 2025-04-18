@@ -29,7 +29,7 @@ function createParams()
         'hvacParams', struct(), ...
         'loadsParams', loadsParams, ...
         'evParams', struct(), ...
-        'comfortWeight', 0), numHomes, 1);
+        'comfortWeight', zeros()), numHomes, 1);
     
     % 逐行填充数据
     for i = 1:numHomes
@@ -59,8 +59,6 @@ function createParams()
             'degradationCostRate', row.EV_DegCost, ...
             'chargeEfficiency', row.EV_EffCharge, ...  % 使用CSV中的实际值
             'dischargeEfficiency', row.EV_EffDischarge);
-
-        homeParamsArray(i).comfortWeight = row.comfortWeight;
     end
 
 
